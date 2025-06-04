@@ -14,7 +14,7 @@ function Provider({
     useEffect(() => {
         const createNewUser = async () => {
             try {
-                await axios.post('/api/user');
+                await axios.post('/api/testuser');
                 hasCreatedUser.current = true;
             } catch (error) {
                 console.error('Failed to create user:', error);
