@@ -1,38 +1,32 @@
-"use client"
-import { AuthContext } from '@/context/AuthContext';
+"use client";
 import { useUser } from '@clerk/nextjs';
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
-
+import React, { useEffect, useRef } from 'react';
 
 function Provider({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const { user, isLoaded } = useUser();
+    const hasCreatedUser = useRef(false); // prevent duplicate calls
 
-    const { user } = useUser();
     useEffect(() => {
-        user && createNewUser();
-    }, [user]);
+        const createNewUser = async () => {
+            try {
+                await axios.post('/api/user');
+                hasCreatedUser.current = true;
+            } catch (error) {
+                console.error('Failed to create user:', error);
+            }
+        };
 
-    const createNewUser = async () => {
-        const result = await axios.post('/api/user');
-    }
+        if (isLoaded && user && !hasCreatedUser.current) {
+            createNewUser();
+        }
+    }, [isLoaded, user]);
 
-    return (
-        <div>
-            {children}
-        </div>
-    )
+    return <div>{children}</div>;
 }
 
-// Custom hook to use auth
-export const useAuthContext = () => {
-    const context = useContext(AuthContext);
-    if (!context) throw new Error("useAuth must be used within an AuthProvider");
-    return context;
-};
-
-export default Provider
-
+export default Provider;

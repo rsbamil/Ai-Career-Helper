@@ -11,35 +11,35 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Calendar, Calendar1Icon, Home, Inbox, Layers, Search, Settings, UserCircle2, Wallet2 } from "lucide-react"
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 const items = [
     {
-        title: "Home",
+        title: "Workspace",
         url: "#",
-        icon: Home,
+        icon: Layers,
     },
     {
-        title: "Inbox",
+        title: "AI Tools",
         url: "#",
         icon: Inbox,
     },
     {
-        title: "Calendar",
+        title: "My History",
         url: "#",
-        icon: Calendar,
+        icon: Calendar1Icon,
     },
     {
-        title: "Search",
+        title: "Billing",
         url: "#",
-        icon: Search,
+        icon: Wallet2,
     },
     {
-        title: "Settings",
+        title: "Profile",
         url: "#",
-        icon: Settings,
+        icon: UserCircle2,
     },
 ]
 
@@ -49,7 +49,7 @@ export function AppSidebar() {
         <Sidebar>
             <SidebarHeader>
                 <div className='p-4'>
-                    <Image src={'./logo.svg'} alt='logo' width={100} height={100}
+                    <Image src={'/logo.png'} alt='logo' width={100} height={75}
                         className='w-full h-full' />
                     <h2 className='text-sm text-gray-400 text-center'>Build Awesome</h2>
                 </div>
