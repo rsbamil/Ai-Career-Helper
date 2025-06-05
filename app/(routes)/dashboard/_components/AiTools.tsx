@@ -5,7 +5,7 @@ const aiToolList=[{
     desc:"Chat wit AI Agent",
     icon:'/chatbot.png',
     button:'Lets Chat',
-    path:'/ai-chat'
+    path:'/ai-tools/ai-chat'
 }
 ,{
     name:"AI Resume Analyzer",
@@ -19,7 +19,7 @@ const aiToolList=[{
     name:"Career Roadmap Generator",
     desc:"Generate your career roadmap",
     icon:'/roadmap.png',
-    button:'Lets Chat',
+    button:'Lets Generate',
     path:'/career-roadmap-generator'},
 {
     name:"Cover Letter Generator",
