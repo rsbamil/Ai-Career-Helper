@@ -11,4 +11,6 @@ export const HistoryTable = pgTable("historyTable", {
   content: json(),
   userEmail: varchar({ length: 255 }).references(() => usersTable.email),
   createdAt: varchar({ length: 255 }),
+  aiAgentType: varchar({ length: 255 }),
+  metaData: varchar(),
 });
